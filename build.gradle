@@ -22,3 +22,33 @@ intellij {
   pluginName = 'HaskCore'
   updateSinceUntilBuild = false
 }
+
+static def getGitRev() {
+  def proc = "git rev-parse --short HEAD".execute()
+  proc.waitFor()
+  return proc.text.trim()
+}
+
+static def isGitDirty() {
+  return "git diff-index --quiet HEAD".execute().waitFor() != 0
+}
+
+def getPluginVersion() {
+  if (version.endsWith('SNAPSHOT')) {
+    if (isGitDirty()) {
+      return "$version-${getGitRev()}-dirty"
+    } else {
+      return "$version-${getGitRev()}"
+    }
+  } else {
+    return version
+  }
+}
+
+patchPluginXml {
+  version = getPluginVersion()
+}
+
+buildPlugin {
+  archiveName = "haskcore-${patchPluginXml.version}.zip"
+}
