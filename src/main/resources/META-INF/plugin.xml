@@ -1,0 +1,15 @@
+<idea-plugin use-idea-classloader="true">
+  <id>com.haskforce</id>
+  <name>HaskCore</name>
+  <idea-version since-build="173"/>
+  <vendor url="https://github.com/carymrobbins/intellij-haskcore">HaskCore on GitHub</vendor>
+
+  <description>
+    Base plugin to be used as a dependency by other Haskell IntelliJ plugins; this
+    plugin is virtually useless when installed on its own.
+  </description>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileTypeFactory implementation="com.haskforce.HaskellFileTypeFactory"/>
+  </extensions>
+</idea-plugin>
