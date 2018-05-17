@@ -19,7 +19,7 @@ repositories {
 
 intellij {
   version = '2017.3'
-  pluginName = 'HaskCore'
+  pluginName = 'HaskForce-Core'
   updateSinceUntilBuild = false
 }
 
@@ -50,5 +50,5 @@ patchPluginXml {
 }
 
 buildPlugin {
-  archiveName = "haskcore-${patchPluginXml.version}.zip"
+  archiveName = "haskforce-core-${patchPluginXml.version}.zip"
 }

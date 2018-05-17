@@ -1,4 +1,4 @@
-# HaskCore
+# HaskForce-Core
 
 Base plugin to be used as a dependency by other Haskell IntelliJ plugins; this
 plugin is virtually useless when installed on its own.

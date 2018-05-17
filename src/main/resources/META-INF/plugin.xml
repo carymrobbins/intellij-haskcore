@@ -1,8 +1,8 @@
 <idea-plugin use-idea-classloader="true">
-  <id>com.haskforce</id>
-  <name>HaskCore</name>
+  <id>com.haskforce.core</id>
+  <name>HaskForce-Core</name>
   <idea-version since-build="173"/>
-  <vendor url="https://github.com/carymrobbins/intellij-haskcore">HaskCore on GitHub</vendor>
+  <vendor url="https://github.com/carymrobbins/intellij-haskforce-core">HaskForce-Core on GitHub</vendor>
 
   <description>
     Base plugin to be used as a dependency by other Haskell IntelliJ plugins; this
