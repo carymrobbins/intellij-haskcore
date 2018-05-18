@@ -1,1 +1,1 @@
-src/main/resources/haskforce-core/version.txt
+0.0.3-SNAPSHOT
