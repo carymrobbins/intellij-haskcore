@@ -2,10 +2,13 @@ plugins {
   id 'org.jetbrains.intellij' version '0.3.1'
 }
 
-version = file('version.txt').text.trim()
-
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 apply plugin: 'org.jetbrains.intellij'
+
+group 'com.haskforce'
+
+version = updateVersion(file('version.txt').text.trim())
 
 sourceCompatibility = 1.8
 
@@ -19,36 +22,31 @@ repositories {
 
 intellij {
   version = '2017.3'
-  pluginName = 'HaskForce-Core'
-  updateSinceUntilBuild = false
 }
 
-static def getGitRev() {
-  def proc = "git rev-parse --short HEAD".execute()
-  proc.waitFor()
-  return proc.text.trim()
-}
-
-static def isGitDirty() {
-  return "git diff-index --quiet HEAD".execute().waitFor() != 0
-}
-
-def getPluginVersion() {
+static def updateVersion(String version) {
   if (version.endsWith('SNAPSHOT')) {
-    if (isGitDirty()) {
-      return "$version-${getGitRev()}-dirty"
+    def proc = "git rev-parse --short HEAD".execute()
+    proc.waitFor()
+    def gitRev = proc.text.trim()
+    def isGitDirty = "git diff-index --quiet HEAD".execute().waitFor() != 0
+    if (isGitDirty) {
+      return "$version-$gitRev-dirty"
     } else {
-      return "$version-${getGitRev()}"
+      return "$version-$gitRev"
     }
   } else {
     return version
   }
 }
 
-patchPluginXml {
-  version = getPluginVersion()
-}
-
-buildPlugin {
-  archiveName = "haskforce-core-${patchPluginXml.version}.zip"
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+    }
+  }
+  repositories {
+    mavenLocal()
+  }
 }
