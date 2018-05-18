@@ -12,12 +12,13 @@ public abstract class HaskForceCoreMeta {
   @NotNull
   public static String getVersion() {
     if (cachedVersion == null) {
-      URL versionTxt = HaskForceCoreMeta.class.getClassLoader().getResource("version.txt");
-      if (versionTxt == null) throw new RuntimeException("Could not find HaskForce-Core version.txt");
+      String fileName = "haskforce-core/version.txt";
+      URL versionTxt = HaskForceCoreMeta.class.getClassLoader().getResource(fileName);
+      if (versionTxt == null) throw new RuntimeException("Could not find " + fileName);
       try {
         cachedVersion = ResourceUtil.loadText(versionTxt).trim();
       } catch (IOException e) {
-        throw new RuntimeException("Failed to load HaskForce-Core version", e);
+        throw new RuntimeException("Failed to load " + fileName, e);
       }
     }
     return cachedVersion;

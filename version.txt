@@ -1,1 +1,1 @@
-src/main/resources/version.txt
+src/main/resources/haskforce-core/version.txt

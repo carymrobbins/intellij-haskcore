@@ -23,14 +23,3 @@ repositories {
 intellij {
   version = '2017.3'
 }
-
-publishing {
-  publications {
-    mavenJava(MavenPublication) {
-      from components.java
-    }
-  }
-  repositories {
-    mavenLocal()
-  }
-}
