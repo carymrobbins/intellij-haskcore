@@ -16,7 +16,7 @@ public class HaskForceCoreMetaTest extends TestCase {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    String actual = HaskForceCoreMeta.getVersion();
+    String actual = HaskForceCoreMeta.VERSION;
     assertMatchesRegex(versionPattern, expected);
     assertEquals(expected, actual);
   }
