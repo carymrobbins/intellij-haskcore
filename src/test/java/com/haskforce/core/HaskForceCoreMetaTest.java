@@ -21,7 +21,7 @@ public class HaskForceCoreMetaTest extends TestCase {
     assertEquals(expected, actual);
   }
 
-  private static Pattern versionPattern = Pattern.compile("^\\d+\\.\\d+\\.\\d+(-SNAPSHOT(-.*)?)$");
+  private static Pattern versionPattern = Pattern.compile("^\\d+\\.\\d+\\.\\d+(-SNAPSHOT(-.*)?)?$");
 
   private void assertMatchesRegex(Pattern p, String s) {
     if (!p.matcher(s).matches()) {
